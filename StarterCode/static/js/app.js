@@ -4,6 +4,10 @@ function buildMetadata(sample) {
         var resultarray = metadata.filter(sampleobject => sampleobject.id == sample); 
         var result = resultarray[0] 
         var PANEL = d3.select("#sample-metadata");
-        
-    }
+
+        PANEL.html(""); 
+        Object.entries(result).forEach(([key, value]) => {
+            PANEL.APPEND("h6").text(`${key} : ${value}`); 
+        });
+    });
 }
