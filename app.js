@@ -9,8 +9,7 @@ console.log(d3.json("samples.json"));
             var sample_data = data.samples.filter(metadatum => metadatum.id = id)
 
     
-            console.log(data)
-            var ids = sample_data[0].OTU_ids
+            var ids = sample_data[0].otu_ids
             console.log(ids)
             var SampleVal = sample_data[0].sample_values.slice(0,10).reverse();
             console.log(SampleVal)
@@ -19,7 +18,7 @@ console.log(d3.json("samples.json"));
             var OTU_TopTen = (sample_data[0].otu_ids.slice(0,10)).reverse();
             console.log(OTU_TopTen)
             var OTU_id = OTU_TopTen.map(d => "OTU" + d);
-            var labels = sample_data.samples[0].otu_labels.slice(0,10); 
+            var labels = sample_data[0].otu_labels.slice(0,10); 
 
             console.log(`OTU IDS: ${OTU_id}`) 
             console.log(`OTU_labels: ${labels}`)
@@ -41,7 +40,4 @@ console.log(d3.json("samples.json"));
 
             gp();
 
-    
-
-        }
-    }
+  
