@@ -3,10 +3,25 @@ console.log(d3.json("samples.json"));
    // d3.json("samples.json").then((importeddata) => {
        // var data = importeddata 
 
-    function gp(id) { 
-        d3.json("samples.json").then(data =>{ 
-            var meta_data = data.metadata.filter(metadatum.id = id) 
-            var sample_data = data.samples.filter(metadatum => metadatum.id = id)
+    function optionChanged(identification) { 
+        d3.json("samples.json").then((data =>{ 
+            var meta_data = data.metadata.filter(metadatum => metadatum.id == identification) 
+            var sample_data = data.samples.filter(sample => sample.id == identification)
+
+            console.log(meta_data) 
+            console.log(sample_data)
+
+            var changed_id = meta_data[0].id 
+            console.log(changed_id)
+            var bbtype = meta_data[0].bbtype
+            var ethnicity = meta_data[0].ethnicity
+            var gender = meta_data[0].gender
+            var location = meta_data[0].location
+            var wfreq = meta_data[0].wfreq 
+
+            var otu_ids = samples[0].otu_ids 
+            var otu_labels = samples[0]
+
 
     
             var ids = sample_data[0].otu_ids
@@ -29,7 +44,7 @@ console.log(d3.json("samples.json"));
                     text: data_labels,
                     marker: {
                     color: 'blue'},
-                    type: "bar"
+                    type: "bar",
                     orientation: "h",
                     };
 
