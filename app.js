@@ -1,5 +1,11 @@
 console.log(d3.json("samples.json"));
 
+var dropdown = document.getElementById("samples.json"); 
+
+for (var i=0; i < otuID.length; ++i) { 
+    dropdown[dropdown.length] = new Option(otuID[i], otuID[i]); 
+}
+
 function initial(selection) {
     d3.json("samples.json").then((data) => {
 
@@ -13,8 +19,8 @@ function initial(selection) {
         var wfreq = data.metadata[0].wfreq
 
         var otuID = data.samples[0].otuID
-        var otuLabels = sample_data[0].otuLabels
-        var sampleVal = sample_data[0].sampleVal
+        var otuLabels = data.samples[0].otuLabels
+        var sampleVal = data.samples[0].sampleVal
         var sampleVal_split = sampleVal.slice(0,10).reverse()
         for (var i=0; i < otuID.length; i++) {
             otuID[i] = "OTU " + otuID[i];
@@ -161,3 +167,4 @@ function optionChanged(selection) {
     Plotly.newPlot(gauge, data, layout)
 })
 }
+
