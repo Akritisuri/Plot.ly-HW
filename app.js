@@ -1,30 +1,41 @@
-console.log(d3.json("samples.json"));
+//var data = d3.json("samples.json");
+//console.log(data);
+//var dropdown = data.samples
 
-var dropdown = document.getElementById("samples.json"); 
+//console.log(d3.json("samples.json"));
 
-for (var i=0; i < otuID.length; ++i) { 
-    dropdown[dropdown.length] = new Option(otuID[i], otuID[i]); 
-}
+//var dropdown = document.getElementById("samples.json"); 
+
+//for (var i=0; i < otuID.length; ++i) { 
+   //dropdown[i] = new Option(otuID[i], otuID[i]); 
+//}
+
+initial(0);
 
 function initial(selection) {
     d3.json("samples.json").then((data) => {
-
 
         var id = data.metadata[0].id
         console.log(id)
         var bbtype = data.metadata[0].bbtype
         var ethnicity = data.metadata[0].ethnicity
+        console.log(ethnicity)
         var gender = data.metadata[0].gender
         var location = data.metadata[0].location
         var wfreq = data.metadata[0].wfreq
 
-        var otuID = data.samples[0].otuID
-        var otuLabels = data.samples[0].otuLabels
-        var sampleVal = data.samples[0].sampleVal
-        var sampleVal_split = sampleVal.slice(0,10).reverse()
-        for (var i=0; i < otuID.length; i++) {
-            otuID[i] = "OTU " + otuID[i];
+        var otuID = data.samples[0].otu_ids
+        var sampleVal_split = otuID.slice(0,10)
+        console.log(sampleVal_split)
+        var dropdown = document.getElementById("selDataset"); 
+
+        for (var i=0; i < sampleVal_split.length; ++i) { 
+            dropdown[i] = new Option("OTU: " + sampleVal_split[i] , sampleVal_split[i]); 
         }
+
+        var otuLabels = data.samples[0].otu_labels
+        var sampleVal = data.samples[0].sample_values
+        
         
         var traceA = {
         type: "bar",
@@ -82,7 +93,7 @@ function initial(selection) {
     }
 
     Plotly.newPlot(gauge, data, layout)
-})
+}) 
 }
 
 function optionChanged(selection) {
@@ -101,9 +112,9 @@ function optionChanged(selection) {
         var location = metaData[0].location
         var wfreq = metaData[0].wfreq
 
-        var otuID = sampleData[0].otuID
-        var otuLabels = sampleData[0].otuLabels
-        var sampleVal = sample_data[0].sampleVal
+        var otuID = sampleData[0].otu_ids
+        var otuLabels = sampleData[0].otu_labels
+        var sampleVal = sample_data[0].sample_values
         var sampleVal_split = sampleVal.slice(0,10).reverse()
         for (var i=0; i < otuID.length; i++) {
             otuID[i] = "OTU " + otuID[i];
