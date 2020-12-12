@@ -38,7 +38,7 @@ function initial(selection) {
         var data = [traceA]
 
         var layout = {
-            title: `${changed_id} Belly Button Biodiversity Data`
+            title: "{changed_id} Belly Button Biodiversity Data"
         }
 
         var CHART = d3.selectALL("#bar").node();
