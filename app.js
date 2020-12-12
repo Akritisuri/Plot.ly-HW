@@ -1,14 +1,3 @@
-//var data = d3.json("samples.json");
-//console.log(data);
-//var dropdown = data.samples
-
-//console.log(d3.json("samples.json"));
-
-//var dropdown = document.getElementById("samples.json"); 
-
-//for (var i=0; i < otuID.length; ++i) { 
-   //dropdown[i] = new Option(otuID[i], otuID[i]); 
-//}
 
 initial(0);
 
