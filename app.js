@@ -1,11 +1,10 @@
-
 initial(0);
 
 function initial(selection) {
     d3.json("samples.json").then((data) => {
 
-        var id = data.metadata[0].id
-        console.log(id)
+        var changed_id = data.metadata[0].id
+        console.log(changed_id)
         var bbtype = data.metadata[0].bbtype
         var ethnicity = data.metadata[0].ethnicity
         console.log(ethnicity)
@@ -38,10 +37,10 @@ function initial(selection) {
         var data = [traceA]
 
         var layout = {
-            title: "{changed_id} Belly Button Biodiversity Data"
+            title: "${changed_id} Belly Button Biodiversity Data"
         }
 
-        var CHART = d3.selectALL("#bar").node();
+        //var CHART = d3.selectALL("#bar").node();
 
         Plotly.newPlot("bar", data, layout)
 
@@ -58,7 +57,7 @@ function initial(selection) {
         var data = [traceB]
 
         var layout = {
-            title: `Belly Button Biodiversity Data ${changed_id}`
+            title: `${changed_id} Belly Button Biodiversity Data`
     }
 
         Plotly.newPlot("bubble", data, layout)
@@ -93,8 +92,8 @@ function optionChanged(selection) {
         console.log(metaData)
         console.log(sampleData)
 
-        var id = metaData[0].id
-        console.log(id)
+        var changed_id = metaData[0].id
+        console.log(changed_id)
         var bbtype = metaData[0].bbtype
         var ethnicity = metaData[0].ethnicity
         var gender = metaData[0].gender
